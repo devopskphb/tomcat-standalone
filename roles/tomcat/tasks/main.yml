@@ -26,7 +26,7 @@
   notify: restart tomcat
 
 - name: Configure Tomcat server
-  template: src=server.xml dest="{{ TOMCAT_HOME }}/conf/
+  template: src=server.xml dest="{{ TOMCAT_HOME }}/conf/"
   notify: restart tomcat
 
 - name: Install Tomcat init script
