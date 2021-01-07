@@ -16,17 +16,17 @@
   command: chdir=/usr/share /bin/tar xvf /opt/apache-tomcat-8.5.51.tar.gz -C /opt/ creates=/opt/apache-tomcat-8.5.51
 
 - name: Symlink install directory
-  file: src=/opt/apache-tomcat-8.5.51 path=/usr/share/tomcat state=link
+  file: src=/opt/apache-tomcat-8.5.51 path="{{ TOMCAT_HOME }}" state=link
 
 - name: Change ownership of Tomcat installation
-  file: path=/usr/share/tomcat/ owner=tomcat group=tomcat state=directory recurse=yes
+  file: path="{{ TOMCAT_HOME }}" owner=tomcat group=tomcat state=directory recurse=yes
 
 - name: Configure Tomcat users
-  template: src=tomcat-users.xml dest=/usr/share/tomcat/conf/
+  template: src=tomcat-users.xml dest="{{ TOMCAT_HOME }}/conf/"
   notify: restart tomcat
 
 - name: Configure Tomcat server
-  template: src=server.xml dest=/usr/share/tomcat/conf/
+  template: src=server.xml dest="{{ TOMCAT_HOME }}/conf/
   notify: restart tomcat
 
 - name: Install Tomcat init script
