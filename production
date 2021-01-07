@@ -1,5 +1,5 @@
 [webservers]
-web1 ansible_host=3.17.144.4 ansible_ssh_private_key_file=/etc/ansible/mykey.pem ansible_user=ec2-user
+web1 ansible_host=18.221.231.1 ansible_ssh_private_key_file=/etc/ansible/mykey.pem ansible_user=ec2-user
 
 [appservers]
-app1 ansible_host=3.16.108.224 ansible_ssh_private_key_file=/etc/ansible/mykey.pem ansible_user=ec2-user
+app1 ansible_host=3.17.60.125 ansible_ssh_private_key_file=/etc/ansible/mykey.pem ansible_user=ec2-user
