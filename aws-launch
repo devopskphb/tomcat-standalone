@@ -1,0 +1,59 @@
+---
+- name: Provision instances
+  hosts: localhost
+  connection: local
+  gather_facts: False
+
+  # load AWS variables from this group vars file
+  vars_files:
+  - group_vars/all
+
+  tasks:
+  - name: Launch instances
+    ec2:
+      access_key: "{{ ec2_access_key }}"
+      secret_key: "{{ ec2_secret_key }}"
+      keypair: "{{ ec2_keypair }}"
+      group_id: "{{ ec2_security_group }}"
+      type: "{{ ec2_instance_type }}"
+      image: "{{ ec2_image }}"
+      region: "{{ ec2_region }}"
+      instance_tags: "{'ansible_group':'jboss', 'type':'{{ ec2_instance_type }}', 'group':'{{ ec2_security_group }}', 'Name':'demo_''{{ tower_user_name }}'}"
+      count: "{{ ec2_instance_count }}"
+      wait: true
+    register: ec2
+
+  - name: Save host data
+    add_host:
+      hostname: "{{ item.public_ip }}"
+      groupname: aws_instances_ips
+    with_items: "{{ ec2.instances }}"
+
+  - name: Wait for SSH to come up
+    wait_for:
+      host: "{{ item.public_dns_name }}"
+      port: 22 
+      delay: 60 
+      timeout: 320 
+      state: started
+    with_items: "{{ ec2.instances }}"
+
+  - name: Add tag to Instance(s)
+    ec2_tag:
+      aws_access_key: "{{ ec2_access_key }}"
+      aws_secret_key: "{{ ec2_secret_key }}"
+      resource: "{{ item.id }}" 
+      region: "{{ ec2_region }}" 
+      state: "present"
+    with_items: "{{ ec2.instances }}"
+    args:
+      tags:
+        Type: webserver
+
+- name: Configure Hosts
+  hosts: aws_instances_ips
+  become: yes
+  become_method: sudo
+  roles:
+    - tomcat
+    - deploywar 
