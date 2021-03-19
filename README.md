@@ -8,11 +8,11 @@ https://docs.ansible.com/ansible/2.8/user_guide/modules_intro.html
 Ansible Vault:
 https://docs.ansible.com/ansible/latest/user_guide/vault.html
 
-ansible-vault encrypt group_vars/main.yml \n
-ansible-vault decrypt group_vars/main.yml \n
+ansible-vault encrypt group_vars/main.yml <br />
+ansible-vault decrypt group_vars/main.yml <br />
 
 Integrated this repo with Jenkins CI/CD pipeline and the the below git repo (Rel branch):
-https://github.com/akmaharshi/petclinic
+https://github.com/akmaharshi/petclinic <br />
 Jenkins file location: https://github.com/akmaharshi/petclinic/blob/rel/Jenkinsfile
 
 Jenkins credentials-binding Plugin:
@@ -22,9 +22,9 @@ Pipeline Syntax:
 https://www.jenkins.io/doc/book/pipeline/syntax
 
 # group_vars/main.yml
-admin_password: \n
-TOMCAT_HOME: /usr/share/tomcat \n
-NEXUS_PASS: \n
+admin_password: <br />
+TOMCAT_HOME: /usr/share/tomcat <br />
+NEXUS_PASS: <br />
 
 # Make jenkins user to run sudo commands
 vi /etc/sudoers
