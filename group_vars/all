@@ -1,8 +1,0 @@
-ec2_access_key: AKIASO3BPZDUQWIYZRH7
-ec2_secret_key: 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
-ec2_keypair: anilOhio
-ec2_security_group: sg-0f8885529b1633406
-ec2_instance_type: t2.micro
-ec2_image: ami-077e31c4939f6a2f3
-ec2_region:us-east-2
-ec2_instance_count: 2
