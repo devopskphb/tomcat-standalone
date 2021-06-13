@@ -11,6 +11,9 @@ https://docs.ansible.com/ansible/latest/user_guide/vault.html
 ansible-vault encrypt group_vars/main.yml <br />
 ansible-vault decrypt group_vars/main.yml <br />
 
+ansible-playbook -i dev site.yml --ask-vault-pass <br />
+ansible-playbook -i dev site.yml --vault-password-file .mypass <br />
+
 Integrated this repo with Jenkins CI/CD pipeline and the the below git repo (Rel branch):
 https://github.com/akmaharshi/petclinic <br />
 Jenkins file location: https://github.com/akmaharshi/petclinic/blob/rel/Jenkinsfile
