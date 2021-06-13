@@ -41,11 +41,11 @@ Use the file aws-launch.yml for launching AWS EC2 instance:
 
 Edit the below properties in the file under groups/all:
 
-| ec2_access_key: | 
-| ec2_secret_key: |  
-| ec2_keypair: | ohio |  
-| ec2_security_group: |  
-| ec2_instance_type: |  t2.micro |
-| ec2_image: | ami-077e31c4939f6a2f3 | 
-| ec2_region: | us-east-2 | 
-| ec2_instance_count: | 2 | 
+`ec2_access_key:
+ec2_secret_key:
+ec2_keypair: ohio
+ec2_security_group:
+ec2_instance_type: t2.micro
+ec2_image: ami-077e31c4939f6a2f3
+ec2_region: us-east-2
+ec2_instance_count: 2`
