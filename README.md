@@ -39,10 +39,11 @@ Use the file aws-launch.yml for launching AWS EC2 instance:
 
 `ansible-playbook -i production aws-launch.yml` <br />
 
-Even you have boto installed and still getting error "boto module is required", execute the below command
-`ansible-playbook -i localhost, aws-launch.yml --extra-vars "ansible_python_interpreter=/usr/bin/python3"` <br />
+Even you have boto installed and still getting error "boto module is required", execute the below command:
 
-Edit the below properties in the "groups/all" file:
+`ansible-playbook -i localhost, aws-launch.yml --extra-vars "ansible_python_interpreter=/usr/bin/python3"`
+
+Edit the below properties in the "groups/all" file: <br />
 
 `ec2_access_key:` <br />
 `ec2_secret_key:` <br />
@@ -54,14 +55,18 @@ Edit the below properties in the "groups/all" file:
 `ec2_instance_count: 2` <br />
 
 ### We need to install boto3 to execute aws-launch.yml script which is a pre-requisite
-Make sure you have python3 installed
+Make sure you have python3 installed <br />
 `python3 --version`
-Download pip
+
+Download pip <br />
 `curl -O https://bootstrap.pypa.io/get-pip.py`
-Execute pip script
+
+Execute pip script <br />
 `python3 get-pip.py`
-Ensure pip is installed successfully
+
+Ensure pip is installed successfully <br />
 `pip --version`
-Install boto3 and boto using pip
-`pip install boto3`
+
+Install boto3 and boto using pip <br />
+`pip install boto3` <br />
 `pip install boto`
