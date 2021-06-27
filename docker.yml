@@ -29,6 +29,7 @@
     - name: install docker py
       pip:
         name: docker
+        extra_args: --user
 
     - name: Pull default Docker image
       docker_image:
