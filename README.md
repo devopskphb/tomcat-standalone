@@ -13,6 +13,7 @@ https://docs.ansible.com/ansible/latest/user_guide/vault.html
 
 `ansible-playbook -i production site.yml --ask-vault-pass` <br />
 `ansible-playbook -i production site.yml --vault-password-file .mypass` <br />
+`ansible-playbook -i production site.yml --vault-id .mypass` <br />
 
 Integrated this repo with Jenkins CI/CD pipeline and the the below git repo (Rel branch):
 https://github.com/akmaharshi/petclinic <br />
