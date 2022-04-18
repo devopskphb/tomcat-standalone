@@ -12,8 +12,16 @@
 - name: Download Tomcat
   get_url: url=http://archive.apache.org/dist/tomcat/tomcat-8/v8.5.51/bin/apache-tomcat-8.5.51.tar.gz dest=/opt/apache-tomcat-8.5.51.tar.gz
 
-- name: Extract archive
-  command: chdir=/usr/share /bin/tar xvf /opt/apache-tomcat-8.5.51.tar.gz -C /opt/ creates=/opt/apache-tomcat-8.5.51
+- name: Unarchive
+  unarchive:
+    src: /opt/apache-tomcat-8.5.51.tar.gz
+    dest: /opt
+    remote_src: yes
+    
+#- name: Extract archive
+#  command: chdir=/usr/share /bin/tar xvf /opt/apache-tomcat-8.5.51.tar.gz -C /opt/ creates=/opt/apache-tomcat-8.5.51
+#  command: /bin/tar xvf /opt/apache-tomcat-8.5.51.tar.gz -C /opt/ 
+#    creates: /opt/apache-tomcat-8.5.51
 
 - name: Symlink install directory
   file: src=/opt/apache-tomcat-8.5.51 path="{{ TOMCAT_HOME }}" state=link
