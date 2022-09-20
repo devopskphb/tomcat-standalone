@@ -24,25 +24,42 @@
 #    creates: /opt/apache-tomcat-8.5.51
 
 - name: Symlink install directory
-  file: src=/opt/apache-tomcat-8.5.51 path="{{ TOMCAT_HOME }}" state=link
+  file: 
+    src: /opt/apache-tomcat-8.5.51 
+    path: "{{ TOMCAT_HOME }}" state=link
 
 - name: Change ownership of Tomcat installation
-  file: path="{{ TOMCAT_HOME }}" owner=tomcat group=tomcat state=directory recurse=yes
+  file: 
+    path: "{{ TOMCAT_HOME }}" 
+    owner: tomcat 
+    group: tomcat
+    state: directory 
+    recurse: yes
 
 - name: Configure Tomcat users
-  template: src=tomcat-users.xml dest="{{ TOMCAT_HOME }}/conf/"
+  template: 
+    src: tomcat-users.xml 
+    dest: "{{ TOMCAT_HOME }}/conf/"
   notify: restart tomcat
 
 - name: Configure Tomcat server
-  template: src=server.xml dest="{{ TOMCAT_HOME }}/conf/"
+  template: 
+    src: server.xml 
+    dest: "{{ TOMCAT_HOME }}/conf/"
   notify: restart tomcat
 
 - name: Install Tomcat init script
-  copy: src=tomcat-initscript.sh dest=/etc/init.d/tomcat mode=0755
+  copy: 
+    src: tomcat-initscript.sh 
+    dest: /etc/init.d/tomcat 
+    mode: 0755
 
 - name: Start Tomcat
-  service: name=tomcat state=started enabled=yes
-  become: True
+  service: 
+    name: tomcat 
+    state: started 
+    enabled: yes
 
 - name: wait for tomcat to start
-  wait_for: port={{http_port}}
+  wait_for: 
+    port: "{{ http_port }}"
